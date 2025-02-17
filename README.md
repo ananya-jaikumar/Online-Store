@@ -1,94 +1,95 @@
-# House Prices: Advanced Regression Techniques
+# 🛒 Newark Online Computer Store (NOCS)
 
 ## 📌 Project Overview
-This project focuses on building a **Machine Learning Pipeline** for predicting house prices based on various features. It is designed to cover the **entire lifecycle of a Data Science project**, making it ideal for professionals who have not worked with large datasets before.
+**Newark Online Computer Store (NOCS)** is an e-commerce platform designed to provide customers with a seamless shopping experience for computer-related products. Built as part of **CS631-007: Database Management Systems Design**, this project focuses on **database implementation, front-end and back-end development, security, and scalability**.
 
-**Dataset**: [House Prices - Advanced Regression Techniques](https://www.kaggle.com/c/house-prices-advanced-regression-techniques/data)
+## 🚀 Features
+### 🔹 User Features
+- User registration and authentication 🔐
+- Browse and search computer hardware and accessories 💻
+- Add/remove items from the shopping cart 🛍️
+- Secure payment processing 💳
+- Order history and tracking 📦
 
-## 🔍 Data Science Lifecycle
-The project follows a structured Data Science Lifecycle:
-1. **Data Analysis** 📊
-2. **Feature Engineering** 🛠️
-3. **Model Selection** 🎯
-4. **Model Building** 🤖
-5. **Model Deployment** 🚀
-
----
-
-## 🏗️ Phase 1: Data Analysis
-In this phase, we perform an exploratory analysis to understand the dataset better:
-- **Missing Values** 🔍
-- **Numerical Variables** 📈
-- **Distribution of Numerical Variables** 📊
-- **Categorical Variables** 🏷️
-- **Cardinality of Categorical Variables** 🔢
-- **Outliers Detection** 🚨
-- **Relationship Between Features and Target Variable (SalePrice)** 💲
+### 🔹 Admin Features
+- Product management (add, update, delete) 🏷️
+- Order and transaction tracking 📊
+- Customer data management 👥
+- Sales analytics and reporting 📈
 
 ---
 
-## ⚙️ Phase 2: Feature Engineering
-Feature engineering plays a critical role in improving model performance. The following steps are performed:
-- **Handling Missing Values**
-- **Processing Temporal Variables** (Year Features)
-- **Encoding Categorical Variables** (Removing Rare Labels)
-- **Standardizing Variables** (Scaling Features to the Same Range)
+## 🏗️ Tech Stack
+### 🔹 Front-End
+- **HTML, CSS, JavaScript**
+- **Responsive UI design** for multi-device support 📱💻
+
+### 🔹 Back-End
+- **PHP** for handling server-side logic
+- **SQL (MySQL/PostgreSQL)** for database management
+- **Node.js** (Optional for API integration)
+
+### 🔹 Security & Optimization
+- **SSL/TLS encryption** for secure transactions 🔒
+- **SQL Injection Protection**
+- **Scalable database architecture**
 
 ---
 
-## 🔬 Phase 3: Model Selection
-We utilize **Lasso Regression** to select the most relevant features. The Lasso model shrinks coefficients of less important features to zero, thus improving the model's interpretability and performance.
-
-**Key Steps:**
-- Implement **Lasso Regression** with `SelectFromModel`.
-- Identify and retain only the most important features.
-
-✅ **Selected Features:**
-- `Unnamed: 0`
-- `YearRemodAdd`
-- `ExterQual`
-- `BsmtQual`
-
-❌ **Features Removed:** 79 irrelevant features were dropped.
+## 📊 Database Structure
+- **Customers** (ID, Name, Email, Address, Phone, Credit Card Info)
+- **Products** (ID, Name, Description, Price, Stock Quantity, Category)
+- **Orders** (Order ID, Customer ID, Date, Total Amount, Payment Method)
+- **Transactions** (Transaction ID, Order ID, Status, Payment Details)
+- **Shopping Cart** (Customer ID, Product ID, Quantity)
 
 ---
 
-## 📊 Phase 4: Model Building
-Using the refined dataset, we build predictive models for house price estimation. Various models such as **Linear Regression, Decision Trees, and Random Forests** can be tested to evaluate their performance.
-
----
-
-## 🚀 Phase 5: Model Deployment
-Once an optimal model is identified, it can be deployed using Flask, FastAPI, or cloud-based services like AWS, GCP, or Azure.
-
----
-
-## 🏁 Getting Started
+## 🛠️ Setup Instructions
 ### 🔹 Prerequisites
 Ensure you have the following installed:
-- Python 3.x 🐍
-- Jupyter Notebook 📓
-- Pandas, NumPy, Scikit-Learn, Matplotlib, Seaborn 📦
+- **PHP & MySQL** for backend processing
+- **Apache/Nginx Server**
+- **Browser (Chrome/Firefox)**
 
-### 🔹 Installation
-Clone the repository and install dependencies:
-```bash
-pip install -r requirements.txt
-```
+### 🔹 Installation Steps
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/ananya-jaikumar/DMSD_Project.git
+   cd DMSD_Project
+   ```
+2. **Setup the Database:**
+   - Import `database.sql` into MySQL
+3. **Run the Server:**
+   - Start Apache/Nginx and ensure PHP is running
+4. **Access the Application:**
+   - Open browser and navigate to `http://localhost/NOCS`
 
-### 🔹 Running the Project
-Execute the Jupyter Notebook to explore the dataset and train the model:
-```bash
-jupyter notebook
-```
+---
+
+## 📌 SQL Queries for Analysis
+- **Total amount charged per credit card**
+  ```sql
+  SELECT CCNumber, ROUND(SUM(Quantity * PriceSold),2) AS Total FROM transactions GROUP BY CCNumber ORDER BY Total DESC;
+  ```
+- **Top 10 customers by spending**
+  ```sql
+  SELECT CustomerID, SUM(TotalAmount) AS Spent FROM orders GROUP BY CustomerID ORDER BY Spent DESC LIMIT 10;
+  ```
+- **Most frequently sold products in a given time period**
+  ```sql
+  SELECT ProductID, COUNT(*) AS Sales FROM transactions WHERE Date BETWEEN '2023-01-01' AND '2023-12-31' GROUP BY ProductID ORDER BY Sales DESC;
+  ```
 
 ---
 
-## 📌 Conclusion
-This project demonstrates a structured approach to handling machine learning pipelines for large datasets. By following a systematic Data Science Lifecycle, we improve model performance and interpretability, ensuring accurate house price predictions.
-
-💡 **Next Steps:** Implement advanced techniques like feature interactions, hyperparameter tuning, and model stacking.
-
-📬 **Have Questions?** Feel free to connect or contribute!
+## 📢 Future Enhancements
+✅ Add AI-powered product recommendations 🧠
+✅ Implement **REST API** for third-party integrations 🔗
+✅ Enable **multi-currency and multilingual support** 🌍
+✅ Deploy to cloud-based platforms like **AWS/GCP** ☁️
 
 ---
+
+💡 Contributions are welcome! Feel free to fork and submit pull requests! 🚀
+
